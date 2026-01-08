@@ -1,4 +1,4 @@
-package it.fast4x.rilink.ui.theme
+package it.fast4x.riviewer.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -33,7 +33,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun RiPlayLinkTheme(
+fun RiPlayViewerTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

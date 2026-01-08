@@ -1,4 +1,4 @@
-package it.fast4x.rilink.utils
+package it.fast4x.riviewer.utils
 
 import android.content.Context
 import android.content.SharedPreferences

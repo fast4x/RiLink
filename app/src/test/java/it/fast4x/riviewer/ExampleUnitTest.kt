@@ -1,4 +1,4 @@
-package it.fast4x.rilink
+package it.fast4x.riviewer
 
 import org.junit.Test
 

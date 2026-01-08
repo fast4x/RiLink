@@ -1,10 +1,10 @@
-package it.fast4x.rilink
+package it.fast4x.riviewer
 
 import android.content.Context
-import it.fast4x.rilink.utils.lastVideoIdKey
-import it.fast4x.rilink.utils.lastVideoSecondsKey
-import it.fast4x.rilink.utils.logDebugEnabledKey
-import it.fast4x.rilink.utils.preferences
+import it.fast4x.riviewer.utils.lastVideoIdKey
+import it.fast4x.riviewer.utils.lastVideoSecondsKey
+import it.fast4x.riviewer.utils.logDebugEnabledKey
+import it.fast4x.riviewer.utils.preferences
 
 fun appContext(): Context = Dependencies.application.applicationContext
 fun context(): Context = Dependencies.application

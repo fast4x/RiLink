@@ -1,7 +1,7 @@
-# RiLink
-YT Remote player 
+# RiViewer
+RiPlay Remote Viewer Component
 
-It allows you to control player on remote device like Android TV or on another device present on the same network.
+It allows you to view media contents from RiPlay, on a remote device like Android TV or another device in the same network.
 
 Work in progress...
 

@@ -1,4 +1,4 @@
-package it.fast4x.rilink.ui.customui
+package it.fast4x.riviewer.ui.customui
 
 
 import android.content.Context

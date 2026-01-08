@@ -1,4 +1,4 @@
-package it.fast4x.rilink.service
+package it.fast4x.riviewer.service
 
 import android.app.Activity
 import android.content.Context
@@ -25,7 +25,7 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import io.ktor.server.plugins.calllogging.CallLogging
 import io.ktor.server.routing.IgnoreTrailingSlash
-import it.fast4x.rilink.appContext
+import it.fast4x.riviewer.appContext
 import kotlinx.coroutines.runBlocking
 import timber.log.Timber
 

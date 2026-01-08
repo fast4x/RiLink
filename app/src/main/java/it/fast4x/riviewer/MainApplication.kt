@@ -1,10 +1,10 @@
-package it.fast4x.rilink
+package it.fast4x.riviewer
 
 import android.app.Application
-import it.fast4x.rilink.utils.CaptureCrash
-import it.fast4x.rilink.utils.FileLoggingTree
-import it.fast4x.rilink.utils.logDebugEnabledKey
-import it.fast4x.rilink.utils.preferences
+import it.fast4x.riviewer.utils.CaptureCrash
+import it.fast4x.riviewer.utils.FileLoggingTree
+import it.fast4x.riviewer.utils.logDebugEnabledKey
+import it.fast4x.riviewer.utils.preferences
 import timber.log.Timber
 import java.io.File
 

@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "it.fast4x.rilink"
+    namespace = "it.fast4x.riviewer"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "it.fast4x.rilink"
+        applicationId = "it.fast4x.riviewer"
         minSdk = 26
         targetSdk = 36
         versionCode = 1

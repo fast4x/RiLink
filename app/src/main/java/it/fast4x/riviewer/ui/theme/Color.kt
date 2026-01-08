@@ -1,4 +1,4 @@
-package it.fast4x.rilink.ui.theme
+package it.fast4x.riviewer.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,4 +1,4 @@
-package it.fast4x.rilink.service
+package it.fast4x.riviewer.service
 
 import android.app.Activity
 import android.content.Context

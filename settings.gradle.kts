@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "RiLink"
+rootProject.name = "RiViewer"
 include(":app")
  

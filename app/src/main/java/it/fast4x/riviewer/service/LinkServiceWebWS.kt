@@ -1,4 +1,4 @@
-package it.fast4x.rilink.service
+package it.fast4x.riviewer.service
 
 import android.app.Activity
 import android.content.Context
@@ -25,9 +25,9 @@ import io.ktor.websocket.DefaultWebSocketSession
 import io.ktor.websocket.Frame
 import io.ktor.websocket.readText
 import io.ktor.websocket.send
-import it.fast4x.rilink.appContext
-import it.fast4x.rilink.models.PlayerState
-import it.fast4x.rilink.models.RemoteCommand
+import it.fast4x.riviewer.appContext
+import it.fast4x.riviewer.models.PlayerState
+import it.fast4x.riviewer.models.RemoteCommand
 import kotlinx.coroutines.channels.ClosedReceiveChannelException
 import kotlinx.serialization.json.Json
 

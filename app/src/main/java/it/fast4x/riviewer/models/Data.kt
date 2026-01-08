@@ -1,4 +1,4 @@
-package it.fast4x.rilink.models
+package it.fast4x.riviewer.models
 
 import kotlinx.serialization.Serializable
 

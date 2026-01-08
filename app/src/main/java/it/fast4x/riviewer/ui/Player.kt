@@ -1,4 +1,4 @@
-package it.fast4x.rilink.ui
+package it.fast4x.riviewer.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -36,18 +36,17 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-import it.fast4x.rilink.MainActivity
-import it.fast4x.rilink.R
-import it.fast4x.rilink.models.PlayerState
-import it.fast4x.rilink.service.LinkServiceWeb
-import it.fast4x.rilink.service.LinkServiceWebWS
-import it.fast4x.rilink.ui.customui.CustomDefaultPlayerUiController
-import it.fast4x.rilink.utils.DeviceInfo
-import it.fast4x.rilink.utils.getDeviceInfo
-import it.fast4x.rilink.utils.isLandscape
-import it.fast4x.rilink.utils.lastVideoIdKey
-import it.fast4x.rilink.utils.lastVideoSecondsKey
-import it.fast4x.rilink.utils.rememberPreference
+import it.fast4x.riviewer.MainActivity
+import it.fast4x.riviewer.R
+import it.fast4x.riviewer.models.PlayerState
+import it.fast4x.riviewer.service.LinkServiceWebWS
+import it.fast4x.riviewer.ui.customui.CustomDefaultPlayerUiController
+import it.fast4x.riviewer.utils.DeviceInfo
+import it.fast4x.riviewer.utils.getDeviceInfo
+import it.fast4x.riviewer.utils.isLandscape
+import it.fast4x.riviewer.utils.lastVideoIdKey
+import it.fast4x.riviewer.utils.lastVideoSecondsKey
+import it.fast4x.riviewer.utils.rememberPreference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

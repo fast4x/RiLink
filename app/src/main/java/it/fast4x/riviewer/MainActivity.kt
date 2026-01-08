@@ -1,4 +1,4 @@
-package it.fast4x.rilink
+package it.fast4x.riviewer
 
 import android.os.Bundle
 import android.view.WindowManager
@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import it.fast4x.rilink.service.registerNsdService
-import it.fast4x.rilink.ui.Player
-import it.fast4x.rilink.ui.theme.RiPlayLinkTheme
+import it.fast4x.riviewer.service.registerNsdService
+import it.fast4x.riviewer.ui.Player
+import it.fast4x.riviewer.ui.theme.RiPlayViewerTheme
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         enableEdgeToEdge()
         setContent {
-            RiPlayLinkTheme {
+            RiPlayViewerTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Player(innerPadding)
                 }
