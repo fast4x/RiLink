@@ -38,7 +38,9 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFram
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import it.fast4x.rilink.MainActivity
 import it.fast4x.rilink.R
+import it.fast4x.rilink.models.PlayerState
 import it.fast4x.rilink.service.LinkServiceWeb
+import it.fast4x.rilink.service.LinkServiceWebWS
 import it.fast4x.rilink.ui.customui.CustomDefaultPlayerUiController
 import it.fast4x.rilink.utils.DeviceInfo
 import it.fast4x.rilink.utils.getDeviceInfo
@@ -46,7 +48,11 @@ import it.fast4x.rilink.utils.isLandscape
 import it.fast4x.rilink.utils.lastVideoIdKey
 import it.fast4x.rilink.utils.lastVideoSecondsKey
 import it.fast4x.rilink.utils.rememberPreference
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @Composable
 fun Player(
@@ -67,21 +73,28 @@ fun Player(
     var lastYTVideoId by rememberPreference(key = lastVideoIdKey, defaultValue = "")
     var lastYTVideoSeconds by rememberPreference(key = lastVideoSecondsKey, defaultValue = 0f)
 
-    val linkService = remember { LinkServiceWeb(
-        context as MainActivity,
-        onCommandLoad = { id, position ->
-            println("CommandService onCommandPlay $id $position")
-            player.value?.loadVideo(id, position)
-        },
-        onCommandPlay = {
-            println("CommandService onCommandPause")
-            player.value?.play()
-        },
-        onCommandPause = {
-            println("CommandService onCommandPause")
-            player.value?.pause()
-        }
-    ) }
+    val linkService = remember {
+        LinkServiceWebWS(
+            context as MainActivity,
+            onCommandLoad = { id, position ->
+                Timber.d("RiLink Player Web Command Load: $id @ $position")
+                mediaId = id
+                player.value?.loadVideo(id, position)
+            },
+            onCommandPlay = {
+                Timber.d("RiLink PlayerWeb Command Play")
+                player.value?.play()
+            },
+            onCommandPause = {
+                Timber.d("RiLink Player Web Command Pause")
+                player.value?.pause()
+            },
+            onCommandSeek = { time ->
+                Timber.d("RiLink Player Web Command Seek: $time")
+                player.value?.seekTo(time)
+            }
+        )
+    }
 
     var deviceInfo: DeviceInfo? by remember { mutableStateOf(null) }
     LaunchedEffect(Unit) {
@@ -175,6 +188,7 @@ fun Player(
                 val iFramePlayerOptions = IFramePlayerOptions.Builder()
                     .controls(0) // show/hide controls
                     .listType("playlist")
+                    .origin("https://music.youtube.com")
                     .build()
 
                 val listener = object : AbstractYouTubePlayerListener() {
@@ -227,6 +241,10 @@ fun Player(
 
                         //youTubePlayer.cueVideo(mediaId, 0f)
 
+                        CoroutineScope(Dispatchers.IO).launch {
+                            linkService.broadcastState(PlayerState(mediaId, false, 0f, 0f))
+                        }
+
 
                     }
 
@@ -238,13 +256,26 @@ fun Player(
                         currentSecond = second
                         lastYTVideoSeconds = second
                         lastYTVideoId = mediaId
+
+                        if (playerState.value == PlayerConstants.PlayerState.PLAYING) {
+                            CoroutineScope(Dispatchers.IO).launch {
+                                linkService.broadcastState(
+                                    PlayerState(
+                                        mediaId = mediaId,
+                                        isPlaying = true,
+                                        currentTime = second,
+                                        duration = currentDuration
+                                    )
+                                )
+                            }
+                        }
                     }
 
                     override fun onVideoDuration(
                         youTubePlayer: YouTubePlayer,
                         duration: Float
                     ) {
-                        super.onVideoDuration(youTubePlayer, duration)
+                        //super.onVideoDuration(youTubePlayer, duration)
                         currentDuration = duration
                     }
 
@@ -252,11 +283,25 @@ fun Player(
                         youTubePlayer: YouTubePlayer,
                         state: PlayerConstants.PlayerState
                     ) {
-                        super.onStateChange(youTubePlayer, state)
+                        //super.onStateChange(youTubePlayer, state)
 //                        if (state == PlayerConstants.PlayerState.ENDED) {
 //                            onVideoEnded()
 //                        }
                         playerState.value = state
+
+                        val isPlaying = state == PlayerConstants.PlayerState.PLAYING
+                        val isEnded = state == PlayerConstants.PlayerState.ENDED
+
+                        CoroutineScope(Dispatchers.IO).launch {
+                            linkService.broadcastState(
+                                PlayerState(
+                                    mediaId = mediaId,
+                                    isPlaying = isPlaying,
+                                    currentTime = currentSecond,
+                                    duration = currentDuration
+                                )
+                            )
+                        }
 
                     }
 
@@ -264,8 +309,16 @@ fun Player(
                         youTubePlayer: YouTubePlayer,
                         playbackQuality: PlayerConstants.PlaybackQuality
                     ) {
-                        super.onPlaybackQualityChange(youTubePlayer, playbackQuality)
-                        println("OnlinePlayer onPlaybackQualityChange $playbackQuality")
+                        //super.onPlaybackQualityChange(youTubePlayer, playbackQuality)
+                        Timber.d("RiLink Player onPlaybackQualityChange $playbackQuality")
+                    }
+
+                    override fun onError(
+                        youTubePlayer: YouTubePlayer,
+                        error: PlayerConstants.PlayerError
+                    ) {
+                        //super.onError(youTubePlayer, error)
+                        Timber.d("RiLink Player onError $error")
                     }
 
 
