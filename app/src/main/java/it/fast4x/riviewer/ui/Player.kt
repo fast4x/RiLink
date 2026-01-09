@@ -76,20 +76,20 @@ fun Player(
         LinkServiceWebWS(
             context as MainActivity,
             onCommandLoad = { id, position ->
-                Timber.d("RiLink Player Web Command Load: $id @ $position")
+                Timber.d("RiViewer Player Web Command Load: $id @ $position")
                 mediaId = id
                 player.value?.loadVideo(id, position)
             },
             onCommandPlay = {
-                Timber.d("RiLink PlayerWeb Command Play")
+                Timber.d("RiViewer PlayerWeb Command Play")
                 player.value?.play()
             },
             onCommandPause = {
-                Timber.d("RiLink Player Web Command Pause")
+                Timber.d("RiViewer Player Web Command Pause")
                 player.value?.pause()
             },
             onCommandSeek = { time ->
-                Timber.d("RiLink Player Web Command Seek: $time")
+                Timber.d("RiViewer Player Web Command Seek: $time")
                 player.value?.seekTo(time)
             }
         )
@@ -147,7 +147,7 @@ fun Player(
                         .padding(top = 30.dp)
                 )
                 Text(
-                    text = "RiLink",
+                    text = "RiViewer",
                     fontSize = MaterialTheme.typography.titleLarge.fontSize,
                     modifier = Modifier
                         .align(Alignment.Center)
@@ -309,7 +309,7 @@ fun Player(
                         playbackQuality: PlayerConstants.PlaybackQuality
                     ) {
                         //super.onPlaybackQualityChange(youTubePlayer, playbackQuality)
-                        Timber.d("RiLink Player onPlaybackQualityChange $playbackQuality")
+                        Timber.d("RiViewer Player onPlaybackQualityChange $playbackQuality")
                     }
 
                     override fun onError(
@@ -317,7 +317,7 @@ fun Player(
                         error: PlayerConstants.PlayerError
                     ) {
                         //super.onError(youTubePlayer, error)
-                        Timber.d("RiLink Player onError $error")
+                        Timber.d("RiViewer Player onError $error")
                     }
 
 

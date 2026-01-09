@@ -79,7 +79,7 @@ class LinkServiceWebWS(
 
         routing {
             get("/") {
-                call.respondText("RiLink Server running on ${ipAddress()}")
+                call.respondText("RiViewer Server running on ${ipAddress()}")
             }
 
             webSocket("/ws") {
