@@ -1,4 +1,4 @@
-package it.fast4x.riviewer.ui.customui
+package it.fast4x.ritune.ui.customui
 
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.customui.PlayerUiController
@@ -20,7 +20,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.customui.menu.YouTub
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.customui.utils.FadeViewHelper
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.customui.views.YouTubePlayerSeekBar
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.customui.views.YouTubePlayerSeekBarListener
-import it.fast4x.riviewer.R
+import it.fast4x.ritune.R
 
 class CustomDefaultPlayerUiController(
     private val youTubePlayerView: YouTubePlayerView,

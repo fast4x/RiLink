@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "it.fast4x.riviewer"
+    namespace = "it.fast4x.ritune"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "it.fast4x.riviewer"
+        applicationId = "it.fast4x.ritune"
         minSdk = 26
         targetSdk = 36
         versionCode = 1

@@ -1,4 +1,4 @@
-package it.fast4x.riviewer.service
+package it.fast4x.ritune.service
 
 import android.app.Activity
 import android.content.Context

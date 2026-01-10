@@ -1,4 +1,4 @@
-package it.fast4x.riviewer
+package it.fast4x.ritune
 
 import android.os.Bundle
 import android.view.WindowManager
@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import it.fast4x.riviewer.service.registerNsdService
-import it.fast4x.riviewer.ui.Player
-import it.fast4x.riviewer.ui.theme.RiPlayViewerTheme
+import it.fast4x.ritune.service.registerNsdService
+import it.fast4x.ritune.ui.Player
+import it.fast4x.ritune.ui.theme.RiPlayViewerTheme
 
 class MainActivity : AppCompatActivity() {
 

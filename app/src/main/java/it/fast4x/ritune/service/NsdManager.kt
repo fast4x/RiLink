@@ -1,10 +1,10 @@
-package it.fast4x.riviewer.service
+package it.fast4x.ritune.service
 
 import android.content.Context
 import android.net.nsd.NsdManager
 import android.net.nsd.NsdServiceInfo
-import it.fast4x.riviewer.appContext
-import it.fast4x.riviewer.utils.getDeviceInfo
+import it.fast4x.ritune.appContext
+import it.fast4x.ritune.utils.getDeviceInfo
 import timber.log.Timber
 import java.net.Socket
 import java.net.UnknownHostException

@@ -1,4 +1,4 @@
-package it.fast4x.riviewer.utils
+package it.fast4x.ritune.utils
 
 import android.util.Log
 import timber.log.Timber

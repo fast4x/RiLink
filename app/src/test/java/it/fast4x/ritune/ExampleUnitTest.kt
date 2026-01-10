@@ -1,4 +1,4 @@
-package it.fast4x.riviewer
+package it.fast4x.ritune
 
 import org.junit.Test
 

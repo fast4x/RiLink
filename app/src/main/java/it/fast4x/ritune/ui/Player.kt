@@ -1,4 +1,4 @@
-package it.fast4x.riviewer.ui
+package it.fast4x.ritune.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,8 +7,11 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -36,17 +39,17 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-import it.fast4x.riviewer.MainActivity
-import it.fast4x.riviewer.R
-import it.fast4x.riviewer.models.PlayerState
-import it.fast4x.riviewer.service.LinkServiceWebWS
-import it.fast4x.riviewer.ui.customui.CustomDefaultPlayerUiController
-import it.fast4x.riviewer.utils.DeviceInfo
-import it.fast4x.riviewer.utils.getDeviceInfo
-import it.fast4x.riviewer.utils.isLandscape
-import it.fast4x.riviewer.utils.lastVideoIdKey
-import it.fast4x.riviewer.utils.lastVideoSecondsKey
-import it.fast4x.riviewer.utils.rememberPreference
+import it.fast4x.ritune.MainActivity
+import it.fast4x.ritune.R
+import it.fast4x.ritune.models.PlayerState
+import it.fast4x.ritune.service.LinkServiceWebWS
+import it.fast4x.ritune.ui.customui.CustomDefaultPlayerUiController
+import it.fast4x.ritune.utils.DeviceInfo
+import it.fast4x.ritune.utils.getDeviceInfo
+import it.fast4x.ritune.utils.isLandscape
+import it.fast4x.ritune.utils.lastVideoIdKey
+import it.fast4x.ritune.utils.lastVideoSecondsKey
+import it.fast4x.ritune.utils.rememberPreference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -76,20 +79,20 @@ fun Player(
         LinkServiceWebWS(
             context as MainActivity,
             onCommandLoad = { id, position ->
-                Timber.d("RiViewer Player Web Command Load: $id @ $position")
+                Timber.d("RiTune Player Web Command Load: $id @ $position")
                 mediaId = id
                 player.value?.loadVideo(id, position)
             },
             onCommandPlay = {
-                Timber.d("RiViewer PlayerWeb Command Play")
+                Timber.d("RiTune PlayerWeb Command Play")
                 player.value?.play()
             },
             onCommandPause = {
-                Timber.d("RiViewer Player Web Command Pause")
+                Timber.d("RiTune Player Web Command Pause")
                 player.value?.pause()
             },
             onCommandSeek = { time ->
-                Timber.d("RiViewer Player Web Command Seek: $time")
+                Timber.d("RiTune Player Web Command Seek: $time")
                 player.value?.seekTo(time)
             }
         )
@@ -146,16 +149,28 @@ fun Player(
                         .align(Alignment.TopStart)
                         .padding(top = 30.dp)
                 )
-                Text(
-                    text = "RiViewer",
-                    fontSize = MaterialTheme.typography.titleLarge.fontSize,
-                    modifier = Modifier
-                        .align(Alignment.Center)
-                        .padding(top = 5.dp)
-                )
+                Column(
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.align(Alignment.Center).fillMaxHeight(.3f)
+                ) {
+                    Text(
+                        text = "RiTune",
+                        fontSize = MaterialTheme.typography.titleLarge.fontSize,
+                        modifier = Modifier
+                    )
+                    Image(
+                        painter = painterResource(R.drawable.ic_launcher_foreground),
+                        contentDescription = "",
+                        modifier = Modifier
+                            .size(64.dp),
+                        colorFilter = ColorFilter.tint(Color.White)
+                    )
+                }
+
                 Image(
                     painter = painterResource(R.drawable.cast_connected),
-                    contentDescription = "Link Connected",
+                    contentDescription = "",
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
                         .padding(bottom = 5.dp, end = 5.dp)
@@ -309,7 +324,7 @@ fun Player(
                         playbackQuality: PlayerConstants.PlaybackQuality
                     ) {
                         //super.onPlaybackQualityChange(youTubePlayer, playbackQuality)
-                        Timber.d("RiViewer Player onPlaybackQualityChange $playbackQuality")
+                        Timber.d("RiTune Player onPlaybackQualityChange $playbackQuality")
                     }
 
                     override fun onError(
@@ -317,7 +332,7 @@ fun Player(
                         error: PlayerConstants.PlayerError
                     ) {
                         //super.onError(youTubePlayer, error)
-                        Timber.d("RiViewer Player onError $error")
+                        Timber.d("RiTune Player onError $error")
                     }
 
 

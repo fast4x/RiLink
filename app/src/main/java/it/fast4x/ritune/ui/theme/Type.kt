@@ -1,4 +1,4 @@
-package it.fast4x.riviewer.ui.theme
+package it.fast4x.ritune.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

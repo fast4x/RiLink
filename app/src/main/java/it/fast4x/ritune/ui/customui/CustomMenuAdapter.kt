@@ -1,4 +1,4 @@
-package it.fast4x.riviewer.ui.customui
+package it.fast4x.ritune.ui.customui
 
 
 import android.content.Context

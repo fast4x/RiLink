@@ -1,4 +1,4 @@
-package it.fast4x.riviewer.models
+package it.fast4x.ritune.models
 
 import kotlinx.serialization.Serializable
 

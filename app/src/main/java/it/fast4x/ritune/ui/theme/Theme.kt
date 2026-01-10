@@ -1,4 +1,4 @@
-package it.fast4x.riviewer.ui.theme
+package it.fast4x.ritune.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

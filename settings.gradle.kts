@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "RiViewer"
+rootProject.name = "RiTune"
 include(":app")
  
