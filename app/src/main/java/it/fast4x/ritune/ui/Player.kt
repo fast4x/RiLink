@@ -256,7 +256,7 @@ fun Player(
                         //youTubePlayer.cueVideo(mediaId, 0f)
 
                         CoroutineScope(Dispatchers.IO).launch {
-                            linkService.broadcastState(PlayerState(mediaId, false, 0f, 0f))
+                            linkService.broadcastState(PlayerState(mediaId, false, 0f, 0f, state = playerState.value))
                         }
 
 
@@ -278,7 +278,8 @@ fun Player(
                                         mediaId = mediaId,
                                         isPlaying = true,
                                         currentTime = second,
-                                        duration = currentDuration
+                                        duration = currentDuration,
+                                        state = playerState.value
                                     )
                                 )
                             }
@@ -312,7 +313,8 @@ fun Player(
                                     mediaId = mediaId,
                                     isPlaying = isPlaying,
                                     currentTime = currentSecond,
-                                    duration = currentDuration
+                                    duration = currentDuration,
+                                    state = playerState.value
                                 )
                             )
                         }
@@ -331,6 +333,17 @@ fun Player(
                         youTubePlayer: YouTubePlayer,
                         error: PlayerConstants.PlayerError
                     ) {
+                        CoroutineScope(Dispatchers.IO).launch {
+                            linkService.broadcastState(
+                                PlayerState(
+                                    mediaId = mediaId,
+                                    isPlaying = false,
+                                    currentTime = currentSecond,
+                                    duration = currentDuration,
+                                    state = playerState.value
+                                )
+                            )
+                        }
                         //super.onError(youTubePlayer, error)
                         Timber.d("RiTune Player onError $error")
                     }
