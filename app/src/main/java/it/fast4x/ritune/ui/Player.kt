@@ -42,7 +42,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
 import it.fast4x.ritune.MainActivity
 import it.fast4x.ritune.R
 import it.fast4x.ritune.models.PlayerState
-import it.fast4x.ritune.service.LinkServiceWebWS
+import it.fast4x.ritune.service.CommandService
 import it.fast4x.ritune.ui.customui.CustomDefaultPlayerUiController
 import it.fast4x.ritune.utils.DeviceInfo
 import it.fast4x.ritune.utils.getDeviceInfo
@@ -76,7 +76,7 @@ fun Player(
     var lastYTVideoSeconds by rememberPreference(key = lastVideoSecondsKey, defaultValue = 0f)
 
     val linkService = remember {
-        LinkServiceWebWS(
+        CommandService(
             context as MainActivity,
             onCommandLoad = { id, position ->
                 Timber.d("RiTune Player Web Command Load: $id @ $position")

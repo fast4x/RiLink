@@ -10,7 +10,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import it.fast4x.ritune.service.registerNsdService
 import it.fast4x.ritune.ui.Player
-import it.fast4x.ritune.ui.theme.RiPlayViewerTheme
+import it.fast4x.ritune.ui.theme.RiTuneTheme
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         enableEdgeToEdge()
         setContent {
-            RiPlayViewerTheme {
+            RiTuneTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Player(innerPadding)
                 }
