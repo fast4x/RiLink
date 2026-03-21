@@ -46,10 +46,6 @@ import it.fast4x.ritune.service.CommandService
 import it.fast4x.ritune.ui.customui.CustomDefaultPlayerUiController
 import it.fast4x.ritune.utils.DeviceInfo
 import it.fast4x.ritune.utils.getDeviceInfo
-import it.fast4x.ritune.utils.isLandscape
-import it.fast4x.ritune.utils.lastVideoIdKey
-import it.fast4x.ritune.utils.lastVideoSecondsKey
-import it.fast4x.ritune.utils.rememberPreference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -70,12 +66,9 @@ fun Player(
     var currentDuration by remember { mutableFloatStateOf(0f) }
     var enableBackgroundPlayback by remember { mutableStateOf(true) }
     val lifecycleOwner = LocalLifecycleOwner.current
-    val isLandscape = isLandscape
     var mediaId by remember { mutableStateOf("Tmod0giDy0o") }
-    var lastYTVideoId by rememberPreference(key = lastVideoIdKey, defaultValue = "")
-    var lastYTVideoSeconds by rememberPreference(key = lastVideoSecondsKey, defaultValue = 0f)
 
-    val linkService = remember {
+    val commandService = remember {
         CommandService(
             context as MainActivity,
             onCommandLoad = { id, position ->
@@ -83,9 +76,14 @@ fun Player(
                 mediaId = id
                 player.value?.loadVideo(id, position)
             },
-            onCommandPlay = {
-                Timber.d("RiTune PlayerWeb Command Play")
-                player.value?.play()
+            onCommandPlay = { id ->
+                Timber.d("RiTune PlayerWeb Command Play id $id")
+                if (mediaId != id) {
+                    mediaId = id
+                    player.value?.loadVideo(id, 0f)
+                } else {
+                    player.value?.play()
+                }
             },
             onCommandPause = {
                 Timber.d("RiTune Player Web Command Pause")
@@ -100,7 +98,7 @@ fun Player(
 
     var deviceInfo: DeviceInfo? by remember { mutableStateOf(null) }
     LaunchedEffect(Unit) {
-        linkService.start()
+        commandService.start()
         deviceInfo = getDeviceInfo()
     }
     
@@ -144,7 +142,7 @@ fun Player(
                         .padding(top = 5.dp)
                 )
                 Text(
-                    text = linkService.ipAddress()?.let { "Address:$it" } ?: "",
+                    text = commandService.ipAddress()?.let { "Address:$it" } ?: "",
                     modifier = Modifier
                         .align(Alignment.TopStart)
                         .padding(top = 30.dp)
@@ -152,7 +150,9 @@ fun Player(
                 Column(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.align(Alignment.Center).fillMaxHeight(.3f)
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .fillMaxHeight(.3f)
                 ) {
                     Text(
                         text = "RiTune",
@@ -256,7 +256,7 @@ fun Player(
                         //youTubePlayer.cueVideo(mediaId, 0f)
 
                         CoroutineScope(Dispatchers.IO).launch {
-                            linkService.broadcastState(PlayerState(mediaId, false, 0f, 0f, state = playerState.value))
+                            commandService.broadcastState(PlayerState(mediaId, false, 0f, 0f, state = playerState.value))
                         }
 
 
@@ -268,12 +268,10 @@ fun Player(
                     ) {
                         super.onCurrentSecond(youTubePlayer, second)
                         currentSecond = second
-                        lastYTVideoSeconds = second
-                        lastYTVideoId = mediaId
 
                         if (playerState.value == PlayerConstants.PlayerState.PLAYING) {
                             CoroutineScope(Dispatchers.IO).launch {
-                                linkService.broadcastState(
+                                commandService.broadcastState(
                                     PlayerState(
                                         mediaId = mediaId,
                                         isPlaying = true,
@@ -308,7 +306,7 @@ fun Player(
                         val isEnded = state == PlayerConstants.PlayerState.ENDED
 
                         CoroutineScope(Dispatchers.IO).launch {
-                            linkService.broadcastState(
+                            commandService.broadcastState(
                                 PlayerState(
                                     mediaId = mediaId,
                                     isPlaying = isPlaying,
@@ -334,7 +332,7 @@ fun Player(
                         error: PlayerConstants.PlayerError
                     ) {
                         CoroutineScope(Dispatchers.IO).launch {
-                            linkService.broadcastState(
+                            commandService.broadcastState(
                                 PlayerState(
                                     mediaId = mediaId,
                                     isPlaying = false,

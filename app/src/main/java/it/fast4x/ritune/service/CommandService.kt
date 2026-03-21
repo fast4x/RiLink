@@ -34,7 +34,7 @@ import kotlinx.serialization.json.Json
 class CommandService(
     private val activity: Activity,
     private val onCommandLoad: (mediaId: String, position: Float) -> Unit,
-    private val onCommandPlay: () -> Unit,
+    private val onCommandPlay: (mediaId: String) -> Unit,
     private val onCommandPause: () -> Unit,
     private val onCommandSeek: (Float) -> Unit
 ) {
@@ -116,7 +116,7 @@ class CommandService(
 
             when (cmd.action) {
                 "load" -> cmd.mediaId?.let { onCommandLoad(it, cmd.position ?: 0f) }
-                "play" -> onCommandPlay()
+                "play" -> cmd.mediaId?.let { onCommandPlay(it)}
                 "pause" -> onCommandPause()
                 "seek" -> cmd.position?.let { onCommandSeek(it) }
                 "sync" -> currentState?.let {
