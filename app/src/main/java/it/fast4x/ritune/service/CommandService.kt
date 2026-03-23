@@ -39,7 +39,7 @@ class CommandService(
     private val onCommandSeek: (Float) -> Unit
 ) {
 
-    private val connections = ConcurrentHashMap<DefaultWebSocketSession, Unit>()
+    val connections = ConcurrentHashMap<DefaultWebSocketSession, Unit>()
 
     private val server by lazy {
 
