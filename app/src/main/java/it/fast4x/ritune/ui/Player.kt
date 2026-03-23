@@ -129,7 +129,6 @@ fun Player(
 
     Box(
         modifier = Modifier
-            //.padding(innerPadding)
             .fillMaxSize()
             .background(Color.Transparent)
     ) {
@@ -146,30 +145,28 @@ fun Player(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    // 1. SFONDO: Gradiente profondo invece di nero pieno
                     .background(
                         Brush.verticalGradient(
                             colors = listOf(
-                                Color(0xFF0a0a0a), // Nero profondo
-                                Color(0xFF101010), // Grigio molto scuro
-                                Color(0xFF000000)  // Nero puro in basso
+                                Color(0xFF0a0a0a),
+                                Color(0xFF101010),
+                                Color(0xFF000000)
                             )
                         )
                     )
             ) {
-                // 2. INFO DISPOSITIVO (In basso a sinistra, stile terminale)
-                // Spostato qui per non occupare spazio visivo in alto
+
                 Column(
                     modifier = Modifier
                         .align(Alignment.BottomStart)
                         .padding(24.dp)
-                        .alpha(0.6f) // Leggermente trasparente per non distrarre
+                        .alpha(0.6f)
                 ) {
                     Text(
                         text = deviceInfo?.let { "${it.deviceBrand} ${it.deviceModel}" } ?: "Device Unknown",
                         color = Color.White,
                         fontSize = 12.sp,
-                        fontFamily = FontFamily.Monospace, // Stile "coder" molto professionale
+                        fontFamily = FontFamily.Monospace,
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
@@ -180,35 +177,35 @@ fun Player(
                     )
                 }
 
-                // 3. CENTRO: Brand e Logo (Hero Section)
+
                 Column(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.align(Alignment.Center)
                 ) {
-                    // Logo più grande con "Glow" (bagliore)
+
                     Image(
                         painter = painterResource(R.drawable.ic_launcher_foreground),
                         contentDescription = "RiTune Logo",
                         modifier = Modifier
-                            .size(120.dp) // Più grande per le TV
+                            .size(120.dp)
                             .padding(bottom = 16.dp),
-                        colorFilter = ColorFilter.tint(Color.White) // Assicura che sia bianco
+                        colorFilter = ColorFilter.tint(Color.White)
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
 
                     Text(
                         text = "RiTune",
-                        fontSize = 48.sp, // Dimensione cinematografica
-                        fontWeight = FontWeight.Light, // Peso leggero per eleganza
+                        fontSize = 48.sp,
+                        fontWeight = FontWeight.Light,
                         color = Color.White,
-                        letterSpacing = 4.sp // Spaziatura lettere per modernità
+                        letterSpacing = 4.sp
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    // Stato
+
                     Text(
                         text = "Ready to Cast",
                         fontSize = 14.sp,
@@ -218,8 +215,7 @@ fun Player(
                     )
                 }
 
-                // 4. ICONA CAST ANIMATA (In basso a destra)
-                // Animazione "Breathing" per indicare attesa attiva
+
                 val infiniteTransition = rememberInfiniteTransition(label = "castPulse")
                 val scale by infiniteTransition.animateFloat(
                     initialValue = 1f,
@@ -241,14 +237,14 @@ fun Player(
                 )
 
                 Image(
-                    painter = painterResource(if (commandService.connections.size > 0) R.drawable.cast_connected else R.drawable.cast_disconnected),
+                    painter = painterResource(if (commandService.connections.isNotEmpty()) R.drawable.cast_connected else R.drawable.cast_disconnected),
                     contentDescription = "Cast Status",
                     modifier = Modifier
                         .align(Alignment.BottomEnd)
                         .padding(24.dp)
                         .size(42.dp)
-                        .scale(scale) // Animazione dimensione
-                        .alpha(alpha), // Animazione opacità
+                        .scale(scale)
+                        .alpha(alpha),
                     colorFilter = ColorFilter.tint(Color.White)
                 )
             }
