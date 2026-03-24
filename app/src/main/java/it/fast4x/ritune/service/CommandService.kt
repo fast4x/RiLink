@@ -84,7 +84,7 @@ class CommandService(
 
             webSocket("/ws") {
                 connections[this] = Unit
-                Timber.d("RiTune LinkserviceWebWS: Controller connesso. Totale connessi: ${connections.size}")
+                Timber.d("RiTune CommandServiceWS: Controller connesso. Totale connessi: ${connections.size}")
 
                 try {
                     currentState?.let {
@@ -99,9 +99,9 @@ class CommandService(
                         }
                     }
                 } catch (e: ClosedReceiveChannelException) {
-                    Timber.d("RiTune LinkserviceWebWS: Controller disconnesso")
+                    Timber.d("RiTune CommandServiceWS: Controller disconnesso")
                 } catch (e: Exception) {
-                    Timber.e(e, "RiTune LinkserviceWebWS: Errore WebSocket")
+                    Timber.e(e, "RiTune CommandServiceWS: Errore WebSocket")
                 } finally {
                     connections.remove(this)
                 }
@@ -112,7 +112,7 @@ class CommandService(
     private suspend fun handleCommand(jsonString: String) {
         try {
             val cmd = Json.decodeFromString<RemoteCommand>(jsonString)
-            Timber.d("RiTune LinkserviceWebWS: Comando ricevuto: $cmd")
+            Timber.d("RiTune CommandServiceWS: Comando ricevuto: $cmd")
 
             when (cmd.action) {
                 "load" -> cmd.mediaId?.let { onCommandLoad(it, cmd.position ?: 0f) }
@@ -124,7 +124,7 @@ class CommandService(
                 }
             }
         } catch (e: Exception) {
-            Timber.e("RiTune LinkserviceWebWS: Errore parsing comando: ${e.message}")
+            Timber.e("RiTune CommandServiceWS: Errore parsing comando: ${e.message}")
         }
     }
 
@@ -133,7 +133,7 @@ class CommandService(
 //            val jsonString = Json.encodeToString(state)
 //            send(jsonString)
 //        } catch (e: Exception) {
-//            Timber.e(e, "LinkserviceWebWS: Errore invio stato sessione")
+//            Timber.e(e, "CommandServiceWS: Errore invio stato sessione")
 //        }
 //    }
 
@@ -145,7 +145,7 @@ class CommandService(
             try {
                 session.send(jsonString)
             } catch (e: Exception) {
-                Timber.e("RiTune LinkserviceWebWS: Errore invio stato a client: ${e.message}")
+                Timber.e("RiTune CommandServiceWS: Errore invio stato a client: ${e.message}")
                 // Opzionale: rimuovi la sessione se l'invio fallisce
                 // connections.remove(session)
             }
@@ -169,7 +169,7 @@ class CommandService(
         connector { port = 18000 }
 
         val currentIp = ipAddress ?: "127.0.0.1"
-        Timber.d("RiTune LinkserviceWebWS: Generazione certificato per IP: $currentIp") // Verifica questo nel Logcat
+        Timber.d("RiTune CommandServiceWS: Generazione certificato per IP: $currentIp") // Verifica questo nel Logcat
 
         // Percorso del file certificato
         val keyStoreFile = File("${appContext().externalCacheDir?.absolutePath}/build/keystore.jks")
@@ -222,7 +222,7 @@ class CommandService(
                 ).hostAddress
             } else null
         } catch (e: Exception) {
-            Timber.e("RiTune LinkserviceWebWS:  Error finding IpAddress: ${e.message}")
+            Timber.e("RiTune CommandServiceWS:  Error finding IpAddress: ${e.message}")
             null
         }
     }

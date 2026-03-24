@@ -117,7 +117,6 @@ fun Player(
         commandService.start()
         deviceInfo = getDeviceInfo()
     }
-    
 
     var showPanel by remember { mutableStateOf(true) }
     LaunchedEffect(showPanel) {
@@ -352,6 +351,8 @@ fun Player(
                                 )
                             }
                         }
+
+                        if (commandService.connections.isEmpty()) player.value?.pause()
                     }
 
                     override fun onVideoDuration(
