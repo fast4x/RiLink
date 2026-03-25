@@ -62,3 +62,6 @@ Distribuito sotto la licenza GNU General Public License v3.0. Vedi il file `LICE
 -   **Repository RiPlay:** [https://github.com/fast4x/RiPlay](https://github.com/fast4x/RiPlay)
 -   **Segnala un Bug:** [Issues RiTune](https://github.com/fast4x/RiTune/issues)
 
+<p align="center">
+Made with ❤️ by <a href="https://github.com/fast4x">fast4x</a>
+</p>
