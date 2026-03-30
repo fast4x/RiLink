@@ -12,53 +12,43 @@
   <a href="https://github.com/fast4x/RiTune/issues"><img src="https://img.shields.io/github/issues/fast4x/RiTune?label=Issues"></a>
 </div>
 
-**Trasforma la tua Android TV in un potente ricevitore multimediale.**
+**Turn your Android TV into a powerful media receiver.**
 
-RiTune è un'applicazione open source per Android TV (e dispositivi Android generici) progettata per fungere da endpoint di riproduzione. Una volta installata sul tuo televisore o box TV, RiTune rende fattibile il casting di audio e video direttamente dall'applicazione RiPlay su smartphone o tablet.
+RiTune is an open source application for Android TV (and general Android devices) designed to serve as a playback endpoint. Once installed on your TV or TV box, RiTune makes it feasible to cast audio and video directly from the RiPlay application on your smartphone or tablet.
 
-## Caratteristiche Principali
+## Main Features
 
-- **Ricezione Audio/Video:** Riproduci senza intoppi contenuti inviati da RiPlay.
-- **Ottimizzato per Android TV:** Interfaccia pensata per l'uso con il telecomando (D-pad) e ottimizzata per schermi grandi.
-- **Zero Configurazione:** Rilevamento automatico del ricevitore all'interno della rete locale.
-- **Open Source:** Codice sorgente totalmente aperto per contributi e trasparenza.
+- **Audio/Video Reception:** Play content submitted by RiPlay without a hitch.
+- **Optimized for Android TV:** Interface designed for use with the remote control (D-pad) and optimized for large screens.
+- **Zero Configuration:** Automatic receiver detection within the local network.
+- **Open Source:** Totally open source code for contributions and transparency.
 
-## Come funziona con RiPlay
+## How it works with RiPlay
 
-Il sistema si basa sull'integrazione tra due app:
+The system is based on the integration between two apps:
 
-1.  **RiPlay (Sender):** L'app sul tuo dispositivo mobile che gestisce la libreria multimediale e avvia lo streaming.
-2.  **RiTune (Receiver):** L'app su Android TV che riceve e riproduce il contenuto.
+1.  **RiPlay (Sender):** The app on your mobile device that manages the media library and starts streaming.
+2.  **RiTune (Receiver):** The app on Android TV that receives and plays the content.
 
-### Guida Rapida
+### Quick Guide
 
-1.  Installa **RiTune** sul tuo dispositivo Android TV.
-2.  Installa **[RiPlay](https://github.com/fast4x/RiPlay)** sul tuo smartphone o tablet.
-3.  Assicurati che entrambi i dispositivi siano connessi alla **stessa rete Wi-Fi**.
-4.  Apri RiPlay, abilita il cast di RiTune, clicca sull'icona di cast in home, seleziona il dispositivo di destinazione e premi play normalmente per avviare il cast.
+1.  Install **RiTune** on your Android TV device.
+2.  Install **[RiPlay](https://github.com/fast4x/RiPlay)** on your smartphone or tablet.
+3.  Make sure both devices are connected to the **same Wi-Fi network**.
+4.  Open RiPlay, enable RiTune casting, click the cast icon on home, select the target device, and press play normally to start casting.
 
-## Installazione
+## Installation
 
-Puoi scaricare l'ultima versione di RiTune direttamente dalla pagina delle releases:
+You can download the latest version of RiTune directly from the releases page:
 
 **[Download Latest Release](https://github.com/fast4x/RiTune/releases)**
 
-## Contribuire
+## License
 
-I contributi sono ben accetti! Se vuoi migliorare RiTune:
+Distributed under the GNU General Public License v3.0. See the 'LICENSE' file for more information.
 
-1.  Fai un Fork del progetto.
-2.  Crea il tuo Branch (`git checkout -b feature/AmazingFeature`).
-3.  Committa le tue modifiche (`git commit -m 'Add some AmazingFeature'`).
-4.  Pusha sul Branch (`git push origin feature/AmazingFeature`).
-5.  Apri una Pull Request.
+## Useful Links
 
-## Licenza
-
-Distribuito sotto la licenza GNU General Public License v3.0. Vedi il file `LICENSE` per maggiori informazioni.
-
-## Link Utili
-
--   **Repository RiPlay:** [https://github.com/fast4x/RiPlay](https://github.com/fast4x/RiPlay)
--   **Segnala un Bug:** [Issues RiTune](https://github.com/fast4x/RiTune/issues)
+- **RiPlay Repository:** [https://github.com/fast4x/RiPlay](https://github.com/fast4x/RiPlay)
+- **Report a Bug:** [Issues RiTune](https://github.com/fast4x/RiTune/issues)
 
