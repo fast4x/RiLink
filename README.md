@@ -52,3 +52,6 @@ Distributed under the GNU General Public License v3.0. See the 'LICENSE' file fo
 - **RiPlay Repository:** [https://github.com/fast4x/RiPlay](https://github.com/fast4x/RiPlay)
 - **Report a Bug:** [Issues RiTune](https://github.com/fast4x/RiTune/issues)
 
+<p align="center">
+Made with ❤️ by <a href="https://github.com/fast4x">fast4x</a>
+</p>
