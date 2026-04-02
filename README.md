@@ -32,10 +32,12 @@ The system is based on the integration between two apps:
 
 ### Quick Guide
 
-1.  Install **RiTune** on your Android TV device.
-2.  Install **[RiPlay](https://github.com/fast4x/RiPlay)** on your smartphone or tablet.
-3.  Make sure both devices are connected to the **same Wi-Fi network**.
-4.  Open RiPlay, enable RiTune casting, click the cast icon on home, select the target device, and press play normally to start casting.
+1.  Install **RiTune** on your Android TV device, **How:**<br>
+    **Can download from your device, or pc** and install in your TV the latest version of RiTune from the releases page: [Download Latest Release](https://github.com/fast4x/RiTune/releases/latest)<br>
+    **OR directly from your TV**, install [AFTVnews Downloader](https://www.aftvnews.com/downloader/) and insert code **1178386**, or use browser web with this link [https://aftv.news/1178386](https://aftv.news/1178386) <br>**Thanks to [elvarHex](https://github.com/elvarHex) for AFTVnews installation.**
+3.  Install **[RiPlay](https://github.com/fast4x/RiPlay)** on your smartphone or tablet.
+4.  Make sure both devices are connected to the **same Wi-Fi network**.
+5.  Open RiPlay, enable RiTune casting, click the cast icon on home, select the target device, and press play normally to start casting.
 
 ## Installation
 
